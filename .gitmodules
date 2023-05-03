@@ -1,0 +1,3 @@
+[submodule "hydra-router"]
+	path = hydra-router
+	url = https://github.com/pnxtech/hydra-router.git
