@@ -4,6 +4,7 @@ import { themeSettings } from "./theme"
 import {ThemeProvider, CssBaseline} from '@mui/material'
 import { useDispatch, useSelector } from "react-redux"
 import { toggleTheme } from "./store/reducers/themeSlice"
+import Navbar from "./components/layout/Navbar"
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     <>
 <ThemeProvider theme={theme}>
 <CssBaseline/>
-<button onClick={()=>dispatch(toggleTheme())}>toggle</button>
+<Navbar/>
 </ThemeProvider>
     </>
   )
