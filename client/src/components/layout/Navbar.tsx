@@ -13,6 +13,7 @@ import profileImage from "../../assets/images/profile .jpeg"
 import {AppBar,useTheme, Toolbar,IconButton, Box, Button, Menu, MenuItem} from "@mui/material"
 import FlexBetween from "../common/FlexBetween"
 import { toggleTheme } from "../../store/reducers/themeSlice"
+import { toggleSideBar } from "../../store/reducers/sideBarSlice"
 
 
 
@@ -37,7 +38,7 @@ function Navbar() {
      <Toolbar sx={{justifyContent: "space-between"}}>
       {/* Left Side */}
       <FlexBetween sx={{width:"60%"}}>
-       <IconButton onClick={()=> console.log('clicked')/*setIsSidebarOpen(!isSidebarOpen)*/}>
+       <IconButton onClick={()=> dispatch(toggleSideBar())/*setIsSidebarOpen(!isSidebarOpen)*/}>
         <MenuIcon/>
        </IconButton>
 
