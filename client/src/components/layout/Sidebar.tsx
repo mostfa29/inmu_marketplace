@@ -36,6 +36,7 @@ import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 
 import { useSelector } from 'react-redux';
+import { selectIsSidebarOpen } from '../../store/selectors/sidebarSelectors';
 
 
 
@@ -56,6 +57,8 @@ const navItems = [
         text:"Marketplace",
         icon:<GroupOutlinedIcon/>
     },
+
+    
     // {
     //     text:"Transactions",
     //     icon:<ReceiptLongOutlined/>
@@ -93,9 +96,8 @@ function Sidebar(
   isNonMobile=true
 }
 ) {
-   const isSidebarOpen= useSelector((state:any) => state.sideBar.isSideBarOpen);
-//    const t = useSelector((state:any) => state.sideBar.isSideBarOpen);
-//    console.log(t)
+   const isSidebarOpen= useSelector(selectIsSidebarOpen);
+
 
    const {pathname} = useLocation()
    const [active, setActive] = useState('')

@@ -8,18 +8,24 @@ import {
 } from "@mui/icons-material"
 
 // import FlexBetween from "./FlexBetween"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import profileImage from "../../assets/images/profile .jpeg"
 import {AppBar,useTheme, Toolbar,IconButton, Box, Button, Menu, MenuItem} from "@mui/material"
 import FlexBetween from "../common/FlexBetween"
-import { toggleTheme } from "../../store/reducers/themeSlice"
-import { toggleSideBar } from "../../store/reducers/sideBarSlice"
+import { selectIsSidebarOpen } from "../../store/selectors/sidebarSelectors"
+import { selectIsDarkMode } from "../../store/selectors/themeSelector"
+import { setIsSidebarOpen } from "../../store/actions/sidebarActions"
+import { setIsDarkMode } from "../../store/actions/themeActions"
+
 
 
 
 function Navbar() {
   const dispatch = useDispatch()
   const theme = useTheme()
+  const isSidebarOpen = useSelector(selectIsSidebarOpen);
+  const isDarkMode = useSelector(selectIsDarkMode);
+
 
   const [anchorEl, setAnchorEl] = useState(null)
   const isOpen = Boolean(anchorEl)
@@ -38,7 +44,7 @@ function Navbar() {
      <Toolbar sx={{justifyContent: "space-between"}}>
       {/* Left Side */}
       <FlexBetween sx={{width:"60%"}}>
-       <IconButton onClick={()=> dispatch(toggleSideBar())/*setIsSidebarOpen(!isSidebarOpen)*/}>
+       <IconButton onClick={()=> dispatch(setIsSidebarOpen(!isSidebarOpen))}>
         <MenuIcon/>
        </IconButton>
 
@@ -47,7 +53,7 @@ function Navbar() {
 
       {/* Right Side */}
       <FlexBetween sx={{width:"40%", justifyContent:"end", gap:"1rem"}} >
-        <IconButton onClick={()=>dispatch(toggleTheme())}>
+        <IconButton onClick={()=>dispatch(setIsDarkMode(!isDarkMode))}>
           {theme.palette.mode === "dark"? (
             <DarkModeOutlined sx={{ fontSize:"25px"}}/>
           ):

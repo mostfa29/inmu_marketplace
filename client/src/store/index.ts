@@ -1,10 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import themeSlice from "./reducers/themeSlice";
-import sideBarSlice from "./reducers/sideBarSlice";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import {loggerMiddleware} from './middlewares/logger'
+import rootReducer from './reducers/rootReducer'
 
-export const store = configureStore({
-  reducer: {
-    theme: themeSlice,
-    sideBar: sideBarSlice
-  },
-})
+
+export default function configureAppStore() {
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: [loggerMiddleware, ...getDefaultMiddleware()],
+    enhancers: []
+  })
+  return store
+}
